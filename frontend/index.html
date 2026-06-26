@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReLaunchHer · a soft place to rise ✨</title>
+  <!-- Font Awesome 6 (free) & elegant fonts: serif headings, clean body -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fffafd;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #app {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ========== GLOBAL FEMININE ELEMENTS ========== */
+    h1, h2, h3, .serif-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    /* soft floral / abstract background shapes (used in sections) */
+    .floral-bg {
+      position: relative;
+      overflow: hidden;
+    }
+    .floral-bg::before {
+      content: "🌸🌷💗🌸";
+      font-size: 8rem;
+      opacity: 0.05;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: rotate(-8deg);
+      pointer-events: none;
+      white-space: nowrap;
+      animation: slowDrift 25s infinite alternate ease-in-out;
+    }
+    .floral-bg-light::after {
+      content: "✨💕✨";
+      font-size: 6rem;
+      opacity: 0.03;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      pointer-events: none;
+      transform: rotate(5deg);
+      animation: slowDriftReverse 30s infinite alternate ease-in-out;
+    }
+
+    @keyframes slowDrift {
+      0% { transform: rotate(-8deg) translate(0, 0); }
+      100% { transform: rotate(-5deg) translate(-20px, -15px); }
+    }
+    @keyframes slowDriftReverse {
+      0% { transform: rotate(5deg) translate(0, 0); }
+      100% { transform: rotate(8deg) translate(25px, 10px); }
+    }
+
+    /* ---------- feminine auth split ---------- */
+    .auth-container {
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffeef5, #ffe5f2, #ffd9ec);
+      background-size: 200% 200%;
+      animation: softGradientFlow 18s ease infinite;
+    }
+
+    @keyframes softGradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .auth-left {
+      flex: 1;
+      background: linear-gradient(145deg, rgba(255, 217, 232, 0.7), rgba(255, 200, 223, 0.7));
+      backdrop-filter: blur(2px);
+      color: #6a1b4d;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 4rem;
+      position: relative;
+      border-radius: 0 80px 80px 0;
+      box-shadow: inset 0 0 80px rgba(255, 240, 250, 0.5);
+      animation: slideInLeft 1.2s ease-out;
+    }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .auth-left h1 {
+      font-size: 4.2rem;
+      color: #791e54;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 0 #ffe2f0;
+      animation: fadeInDown 1.4s ease-out;
+    }
+
+    .auth-left .empowering-quote {
+      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #912f62;
+      line-height: 1.2;
+      border-left: 6px solid #f9b8e0;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1.6s ease-out;
+    }
+
+    .auth-left .motivation {
+      font-size: 1.25rem;
+      background: rgba(255, 240, 250, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 2rem;
+      border-radius: 48px 48px 48px 16px;
+      color: #57194a;
+      font-weight: 400;
+      max-width: 80%;
+      box-shadow: 0 15px 30px -8px #f7b0d0;
+      animation: fadeInUp 1.8s ease-out;
+    }
+
+    .auth-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(255, 245, 250, 0.3);
+      backdrop-filter: blur(2px);
+      background-image: radial-gradient(circle at 10% 30%, #ffe2f0 5%, transparent 30%);
+      overflow-y: auto;
+      animation: slideInRight 1.2s ease-out;
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* glassmorphism login card */
+    .auth-card {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(255, 250, 253, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 32px;
+      box-shadow: 0 20px 60px rgba(243, 167, 200, 0.3);
+      padding: 2.5rem;
+      border: 1px solid rgba(255, 226, 242, 0.8);
+      margin: auto;
+      max-height: 95vh;
+      overflow-y: auto;
+      animation: cardFloat 1.4s ease-out;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .auth-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 70px rgba(243, 147, 200, 0.4);
+    }
+
+    @keyframes cardFloat {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      background: #ffeaf3;
+      padding: 0.5rem;
+      border-radius: 50px;
+      justify-content: center;
+      position: relative;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #ae6191;
+      cursor: pointer;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      flex: 1;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tab-btn.active {
+      background: #ffd9ec;
+      color: #a13377;
+      box-shadow: 0 4px 12px rgba(252, 186, 219, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .tab-btn:active {
+      transform: scale(0.95);
+    }
+
+    .form-group {
+      margin-bottom: 0.9rem;
+      animation: fadeInUp 0.8s ease-out backwards;
+      animation-delay: calc(0.1s * var(--i, 1));
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      color: #902e68;
+      margin-bottom: 0.4rem;
+      padding-left: 0.5rem;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 2px solid #ffdae9;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      background: #fff9fe;
+      transition: all 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #f5a6cf;
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(245, 166, 207, 0.15);
+      background: #ffffff;
+      transform: scale(1.02);
+    }
+
+    .error-message {
+      color: #d14a61;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      padding-left: 0.5rem;
+      min-height: 1.2rem;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(3px); }
+      75% { transform: translateX(-3px); }
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1rem 0;
+      background: #ffe7f8;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .checkbox-group:hover {
+      background: #ffdef5;
+      transform: scale(1.02);
+    }
+
+    .checkbox-group input {
+      width: 20px;
+      height: 20px;
+      accent-color: #e467a9;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .checkbox-group input:checked {
+      transform: scale(1.2);
+    }
+
+    .checkbox-group label {
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(115deg, #f8a8cf, #f47ab0);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.9rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(251, 176, 214, 0.4);
+      transition: all 0.3s ease;
+      letter-spacing: 0.3px;
+      font-family: 'Quicksand', sans-serif;
+      margin-top: 0.3rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out, softPulse 3s infinite;
+    }
+
+    @keyframes softPulse {
+      0% { box-shadow: 0 8px 20px rgba(251, 176, 214, 0.4); }
+      50% { box-shadow: 0 12px 30px rgba(251, 176, 214, 0.7), 0 0 0 3px rgba(255, 200, 235, 0.3); }
+      100% { box-shadow: 0 8px 20px rgba(251, 176, 214, 0.4); }
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(115deg, #ffb6da, #fc8fc2);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(255, 184, 218, 0.5);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+
+    .btn-primary:active::after {
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+    }
+
+    .auth-switch {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 500;
+      color: #983f75;
+      font-size: 0.9rem;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .auth-switch span {
+      color: #c44b91;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: #ffaad4;
+      text-underline-offset: 3px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .auth-switch span:hover {
+      color: #d14a91;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* floating hearts animation */
+    .floating-heart {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatHeart 15s infinite linear;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-30px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0); }
+    }
+
+    .heart1 { top: 15%; left: 10%; animation-duration: 18s; }
+    .heart2 { bottom: 20%; right: 15%; animation-duration: 22s; }
+    .sparkle { position: absolute; font-size: 1.5rem; opacity: 0.1; animation: sparkleTwinkle 3s infinite; }
+    @keyframes sparkleTwinkle {
+      0%, 100% { opacity: 0.1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.2); }
+    }
+
+    /* ========== DASHBOARD STYLES (unchanged) ========== */
+    .dashboard-container {
+      display: flex;
+      min-height: 100vh;
+      background: #fff9fd;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: #ffe5f1;
+      backdrop-filter: blur(6px);
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 8px 0 35px #fccce4;
+      border-radius: 0 60px 60px 0;
+      border-right: 3px solid #ffe0f0;
+    }
+
+    .logo-side {
+      font-size: 2.2rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      background: linear-gradient(145deg, #ce6da3, #a13f7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-side i {
+      background: white;
+      padding: 10px;
+      border-radius: 30px;
+      color: #db77ae;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 8px #fcc2e5;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      margin: 0.3rem 0.5rem;
+      border-radius: 50px;
+      color: #7b3d63;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-item i {
+      width: 30px;
+      font-size: 1.4rem;
+      color: #d668a8;
+    }
+
+    .nav-item.active, .nav-item:hover {
+      background: #ffcfe8;
+      color: #ad327b;
+      box-shadow: 0 5px 0 #ffb0d4;
+      transform: translateY(-2px);
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem 2.5rem;
+      overflow-y: auto;
+    }
+
+    .welcome-header {
+      background: #ffe5f5;
+      padding: 2.2rem 2.5rem;
+      border-radius: 80px 80px 80px 30px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 15px 0 #fec7e2;
+      position: relative;
+    }
+
+    .user-greeting {
+      font-size: 2.7rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #561f45;
+    }
+
+    .user-greeting span {
+      background: linear-gradient(145deg, #f06ab0, #bf5293);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .progress-row {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .progress-card {
+      background: #ffffffd9;
+      backdrop-filter: blur(6px);
+      border-radius: 80px;
+      padding: 1.8rem 2.5rem;
+      box-shadow: 0 20px 30px #fbc9e6;
+      flex: 1 1 240px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border: 2px solid #ffe0fb;
+    }
+
+    .circle-progress {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: conic-gradient(#f28bb3 0deg 252deg, #fdd2f2 252deg 360deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #902e68;
+      border: 5px solid white;
+      box-shadow: 0 5px 0 #feb8dd;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: linear-gradient(145deg, #ffffff, #fff0f8);
+      border-radius: 60px;
+      padding: 2.2rem 1.5rem;
+      box-shadow: 0 15px 25px #fcc2e3;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 35px #feb3dd;
+    }
+
+    .feature-card i {
+      font-size: 3rem;
+      background: linear-gradient(145deg, #f28bb3, #c45f9b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.7rem;
+      color: #832862;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .feature-card p {
+      color: #aa6191;
+      font-weight: 500;
+    }
+
+    .feature-page {
+      background: #fff5fd;
+      border-radius: 80px;
+      padding: 2.8rem;
+      box-shadow: 0 18px 0 #ffcfea;
+      border: 2px solid white;
+      position: relative;
+    }
+
+    .job-filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .job-card {
+      background: #ffeef8;
+      border-radius: 50px;
+      padding: 2rem;
+      margin-bottom: 1.2rem;
+      border-left: 15px solid #f6a9d2;
+    }
+
+    .tag {
+      background: #ffddf5;
+      color: #ac3f84;
+      padding: 0.4rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 0.6rem;
+    }
+
+    .post-card {
+      background: #ffeef8;
+      border-radius: 40px;
+      padding: 1.8rem;
+      margin-bottom: 1rem;
+      border: 2px dashed #feb0e2;
+    }
+
+    .report-btn {
+      background: #fff0fa;
+      border: 2px solid #ffb3d6;
+      color: #bc5181;
+      padding: 0.4rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    hr {
+      border: 2px dotted #fbc1e2;
+      margin: 2rem 0;
+    }
+
+    /* ========== RESPONSIVE DESIGN ========== */
+    @media (max-width: 1024px) {
+      .auth-left {
+        padding: 2rem;
+      }
+      .auth-left h1 {
+        font-size: 3.5rem;
+      }
+      .auth-left .empowering-quote {
+        font-size: 2rem;
+      }
+      .auth-left .motivation {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .auth-container {
+        flex-direction: column;
+      }
+      
+      .auth-left {
+        border-radius: 0 0 80px 80px;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+      
+      .auth-left .empowering-quote {
+        border-left: none;
+        border-bottom: 6px solid #f9b8e0;
+        padding: 0 0 1.5rem 0;
+        margin-bottom: 1.5rem;
+      }
+      
+      .auth-left .motivation {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      
+      .auth-right {
+        padding: 1.5rem;
+      }
+      
+      .auth-card {
+        max-width: 100%;
+        padding: 1.8rem;
+      }
+      
+      .dashboard-container {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        border-radius: 0 0 60px 60px;
+        padding: 1rem;
+      }
+      
+      .logo-side {
+        margin-bottom: 1rem;
+        justify-content: center;
+      }
+      
+      .nav-item {
+        display: inline-flex;
+        width: auto;
+        margin: 0.2rem;
+      }
+      
+      .sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .main-content {
+        padding: 1.5rem;
+      }
+      
+      .user-greeting {
+        font-size: 2rem;
+      }
+      
+      .progress-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .auth-left h1 {
+        font-size: 2.8rem;
+      }
+      
+      .auth-left .empowering-quote {
+        font-size: 1.6rem;
+      }
+      
+      .auth-left .motivation {
+        font-size: 1rem;
+        padding: 1.2rem;
+      }
+      
+      .tabs {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .tab-btn {
+        padding: 0.6rem 1rem;
+      }
+      
+      .checkbox-group {
+        flex-wrap: wrap;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-page {
+        padding: 1.5rem;
+      }
+      
+      .job-card {
+        padding: 1.2rem;
+      }
+    }
+
+    /* animation utilities */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #ffe6f2;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #f7a9cf;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f28bb3;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- floating decorative elements -->
+  <div class="floating-heart heart1">💗</div>
+  <div class="floating-heart heart2">🌸</div>
+  <div class="sparkle" style="top: 30%; right: 20%;">✨</div>
+  <div class="sparkle" style="bottom: 20%; left: 10%;">✨</div>
+
+  <!-- AUTH PAGE with feminine glassmorphism -->
+  <div id="authPage" class="auth-container floral-bg floral-bg-light">
+    <div class="auth-left">
+      <h1>🌸 ReLaunchHer</h1>
+      <div class="empowering-quote">“Your comeback is your power.”</div>
+      <div class="motivation">A soft, safe space for women restarting their careers. You are not alone — we rise by lifting each other. 💕</div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-card">
+        <div class="tabs">
+          <button class="tab-btn active" id="loginTabBtn" onclick="showLoginForm()">💗 Log in</button>
+          <button class="tab-btn" id="signupTabBtn" onclick="showSignupForm()">🌷 Sign up</button>
+        </div>
+
+        <!-- login form -->
+        <div id="loginForm">
+          <div class="form-group" style="--i:1"><label><i class="far fa-envelope"></i> Email</label><input type="email" id="loginEmail" placeholder="hello@risewith.us"></div>
+          <div class="form-group" style="--i:2"><label><i class="fas fa-lock"></i> Password</label><input type="password" id="loginPassword" placeholder="••••••••"></div>
+          <div class="error-message" id="loginEmailError"></div><div class="error-message" id="loginPassError"></div>
+          <button class="btn-primary" onclick="handleLogin()"><i class="fas fa-heart"></i> Log in</button>
+          <div class="auth-switch">New here? <span onclick="showSignupForm()">join the sisterhood</span></div>
+        </div>
+
+        <!-- signup form (hidden) -->
+        <div id="signupForm" class="hidden">
+          <div class="form-group" style="--i:1"><label>Full name</label><input type="text" id="fullName" placeholder="Priya Sharma"></div>
+          <div class="form-group" style="--i:2"><label>Email</label><input type="email" id="signupEmail"></div>
+          <div class="form-group" style="--i:3"><label>Password</label><input type="password" id="signupPass"></div>
+          <div class="form-group" style="--i:4"><label>Confirm password</label><input type="password" id="confirmPass"><div class="error-message" id="passMatchError"></div></div>
+          <div class="form-group" style="--i:5"><label>Industry</label><select id="industry"><option>Tech</option><option>Finance</option><option>Creative</option><option>Healthcare</option></select></div>
+          <div class="form-group" style="--i:6"><label>Previous role</label><input type="text" id="prevRole" placeholder="e.g. Marketing Lead"></div>
+          <div class="form-group" style="--i:7"><label>Career break duration</label><select id="breakDuration"><option>1-2 years</option><option>3-5 years</option><option>6+ years</option></select></div>
+          <div class="form-group" style="--i:8"><label>Target role</label><input type="text" id="targetRole" placeholder="Product Manager"></div>
+          <div class="form-group" style="--i:9"><label>Work preference</label><select id="workPref"><option>Remote</option><option>Hybrid</option><option>On-site</option></select></div>
+          <div class="checkbox-group" style="--i:10"><input type="checkbox" id="selfDeclare"><label for="selfDeclare">This platform is for women restarting careers 💪</label></div>
+          <button class="btn-primary" onclick="handleSignup()"><i class="fas fa-feather"></i> Create account</button>
+          <div class="auth-switch">Already a member? <span onclick="showLoginForm()">log in</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD (hidden) -->
+  <div id="dashboardPage" class="dashboard-container hidden">
+    <div class="sidebar">
+      <div class="logo-side"><i class="fas fa-feather"></i> ReLaunchHer</div>
+      <div class="nav-item active" onclick="showDashboardMain()"><i class="fas fa-chart-pie"></i> Dashboard</div>
+      <div class="nav-item" onclick="showFeature('resumeGap')"><i class="fas fa-wand-magic"></i> AI Resume Gap</div>
+      <div class="nav-item" onclick="showFeature('roadmap')"><i class="fas fa-map"></i> Career Roadmap</div>
+      <div class="nav-item" onclick="showFeature('interview')"><i class="fas fa-microphone"></i> Interview Practice</div>
+      <div class="nav-item" onclick="showFeature('assessment')"><i class="fas fa-star"></i> Readiness</div>
+      <div class="nav-item" onclick="showFeature('jobs')"><i class="fas fa-briefcase"></i> Job Discovery</div>
+      <div class="nav-item" onclick="showFeature('mentorship')"><i class="fas fa-hand-holding-heart"></i> Mentorship</div>
+      <div class="nav-item" onclick="showFeature('peer')"><i class="fas fa-comment-dots"></i> Peer Support</div>
+      <div style="flex:1"></div>
+      <div class="nav-item" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</div>
+    </div>
+    <div class="main-content" id="mainContentArea"></div>
+  </div>
+</div>
+
+<script>
+  // feminine UI interactions
+  function showLoginForm() {
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('signupForm').classList.add('hidden');
+    document.getElementById('loginTabBtn').classList.add('active');
+    document.getElementById('signupTabBtn').classList.remove('active');
+  }
+  function showSignupForm() {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('signupForm').classList.remove('hidden');
+    document.getElementById('loginTabBtn').classList.remove('active');
+    document.getElementById('signupTabBtn').classList.add('active');
+  }
+
+  function showDashboard() {
+    document.getElementById('authPage').classList.add('hidden');
+    document.getElementById('dashboardPage').classList.remove('hidden');
+    showDashboardMain();
+  }
+
+  function logout() {
+    localStorage.removeItem('relaunchher_user');
+    document.getElementById('authPage').classList.remove('hidden');
+    document.getElementById('dashboardPage').classList.add('hidden');
+    showLoginForm();
+  }
+
+  function showDashboardMain() {
+    let userName = localStorage.getItem('relaunchher_user') || 'Sneha';
+    let html = `
+      <div class="welcome-header">
+        <div class="user-greeting"><i class="fas fa-heart" style="color:#f28bb3;"></i> Welcome back, <span>${userName}</span></div>
+        <p style="color:#af5286; font-size:1.4rem; margin-top:0.6rem;">you're glowing — let's rise together ✨</p>
+      </div>
+      <div class="progress-row">
+        <div class="progress-card"><div class="circle-progress" style="background: conic-gradient(#f28bb3 0deg 260deg, #ffd6e8 260deg 360deg);">74%</div><div><strong style="font-size:1.4rem;">readiness</strong><br> +3% this week</div></div>
+        <div class="progress-card"><div class="circle-progress" style="background: conic-gradient(#f4a2c6 0deg 200deg, #ffd6e8 200deg 360deg);">60%</div><div><strong style="font-size:1.4rem;">confidence</strong><br> +10% since last month</div></div>
+      </div>
+      <h2 style="color:#791e54;"><i class="fas fa-sparkle" style="color:#f28bb3;"></i> your comeback toolkit</h2>
+      <div class="feature-grid">
+        <div class="feature-card" onclick="showFeature('resumeGap')"><i class="fas fa-wand-magic"></i><h3>AI Resume Gap</h3><p>reframe with power</p></div>
+        <div class="feature-card" onclick="showFeature('roadmap')"><i class="fas fa-map"></i><h3>Career Roadmap</h3><p>skills & certs</p></div>
+        <div class="feature-card" onclick="showFeature('interview')"><i class="fas fa-microphone"></i><h3>Interview Practice</h3><p>simulate & shine</p></div>
+        <div class="feature-card" onclick="showFeature('jobs')"><i class="fas fa-briefcase"></i><h3>Job Discovery</h3><p>returnship roles</p></div>
+        <div class="feature-card" onclick="showFeature('mentorship')"><i class="fas fa-hand-holding-heart"></i><h3>Mentorship</h3><p>leaders who care</p></div>
+        <div class="feature-card" onclick="showFeature('peer')"><i class="fas fa-comment-dots"></i><h3>Peer Support</h3><p>you're not alone</p></div>
+      </div>
+    `;
+    document.getElementById('mainContentArea').innerHTML = html;
+  }
+
+  function showFeature(feature) {
+    let content = '';
+    if (feature === 'resumeGap') {
+      content = `<div class="feature-page"><h2>✨ AI transformation room</h2><div class="form-group"><label>Previous role</label><input id="prevRoleGap" value="Product Manager"></div><div class="form-group"><label>Break duration</label><input id="breakGap" value="2.5 years"></div><div class="form-group"><label>Reason</label><input id="reasonGap" value="family focus"></div><button class="btn-primary" onclick="generateGapReframe()">reframe with love ✨</button><p id="gapOutput" style="background:#ffeaf5; padding:1.8rem; border-radius:40px; margin-top:1.5rem;">My 2.5 year break deepened my empathy, organisation, and resilience. I’m returning with stronger prioritisation skills and fresh perspectives.</p><button class="btn-primary" style="width:auto;" onclick="copyGap()"><i class="fas fa-copy"></i> copy</button><p style="margin-top:1rem;">💗 Your journey is your strength.</p></div>`;
+    } else if (feature === 'roadmap') {
+      content = `<div class="feature-page"><h2>🌸 guided comeback journey</h2><ul style="list-style:none;"><li><input type="checkbox" checked> ✦ update resume <span style="color:#c45f9b;">(done!)</span></li><li><input type="checkbox"> ✦ Google Analytics cert</li><li><input type="checkbox"> ✦ SQL refresher</li><li><input type="checkbox"> ✦ network with 3 mentors</li></ul><progress value="50" max="100" style="width:100%; height:16px; border-radius:30px; accent-color:#f28bb3;"></progress> <span style="color:#ac3f84;">2/4 completed, you're on track 💕</span></div>`;
+    } else if (feature === 'interview') {
+      content = `<div class="feature-page"><h2>🎤 friendly interview practice</h2><div class="form-group"><label>Role</label><select><option>Product Manager</option><option>UX designer</option></select></div><p><strong>🌸 Question:</strong> tell me about a time you led through ambiguity</p><textarea rows="3" placeholder="your answer..."></textarea><button class="btn-primary" style="margin:1rem 0;">get kind feedback</button><div style="background:#ffe4f3; padding:1.4rem; border-radius:40px;"><p>💬 clarity 84% · structure 79% · confidence 65%</p><p>you're doing great — add more 'result' in STAR. Keep going, you’re improving 💕</p></div></div>`;
+    } else if (feature === 'assessment') {
+      content = `<div class="feature-page"><h2>📊 readiness assessment</h2><div class="circle-progress" style="margin:auto; width:140px; height:140px;">74%</div><p><strong>breakdown</strong> resume 90% · skills 68% · interview 70% · profile 80%</p><p>🌸 suggestion: highlight leadership during break – you've got this!</p></div>`;
+    } else if (feature === 'jobs') {
+      content = `<div class="feature-page"><h2>💼 job discovery · soft and elegant</h2><div class="job-filters"><select><option>all modes</option><option>remote 💻</option><option>hybrid 🌸</option></select><select><option>returnship 💖</option></select></div><div class="job-card"><h3>✨ Product Manager (returnship)</h3><p>FinTech · remote · <span class="tag">#diversity</span><span class="tag">flexible ⏰</span></p></div><div class="job-card"><h3>✨ UX designer</h3><p>Healthtech · hybrid 🌸 · <span class="tag">returnship 💖</span></p></div></div>`;
+    } else if (feature === 'mentorship') {
+      content = `<div class="feature-page"><h2>👩‍🏫 you are not alone · mentorship</h2><div class="form-group"><label>industry</label><select><option>tech</option></select></div><div style="background:#ffe2fd; padding:1.2rem; border-radius:50px;">🌸 Swati · Director · 3 sessions left</div><div style="background:#ffe2fd; padding:1.2rem; border-radius:50px; margin-top:1rem;">🌸 Anjali · product leader · 5 spots</div><button class="btn-primary" style="margin:2rem 0"><i class="fab fa-whatsapp"></i> join whatsapp sisterhood</button><div style="background:#ffdff2; padding:1.2rem; border-radius:40px;">✨ community guidelines: be kind, no self-promo</div></div>`;
+    } else if (feature === 'peer') {
+      content = `<div class="feature-page"><h2>🌸 peer support · safe diary space</h2><textarea placeholder="share anonymously..." rows="2"></textarea><button class="btn-primary" style="width:auto;">post 🌼</button><hr><div class="post-card">🌿 anonymous: feeling nervous but excited! <button class="report-btn">report</button></div><div class="post-card">🌿 anonymous: just updated my resume after 4 years! <button class="report-btn">report</button></div></div>`;
+    }
+    document.getElementById('mainContentArea').innerHTML = content;
+  }
+
+  window.showDashboard = showDashboard;
+  window.showDashboardMain = showDashboardMain;
+  window.showFeature = showFeature;
+  window.showLoginForm = showLoginForm;
+  window.showSignupForm = showSignupForm;
+  window.logout = logout;
+
+  window.generateGapReframe = function() {
+    document.getElementById('gapOutput').innerText = 'My career break allowed me to cultivate empathy, adapt quickly, and manage complex family logistics — strengths I’m excited to bring back to the workplace.';
+  };
+  window.copyGap = function() {
+    navigator.clipboard?.writeText(document.getElementById('gapOutput').innerText);
+    alert('✨ copied to clipboard!');
+  };
+
+  window.onload = function() {
+    if (localStorage.getItem('relaunchher_user')) showDashboard();
+    else showLoginForm();
+    
+    // Add floating label effect
+    document.querySelectorAll('input, select').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.querySelector('label')?.classList.add('focused');
+      });
+      input.addEventListener('blur', function() {
+        if (!this.value) {
+          this.parentElement.querySelector('label')?.classList.remove('focused');
+        }
+      });
+    });
+  };
+</script>
+<script src="/static/api.js"></script>
+<script src="/static/fix.js"></script>
+</body>
+</html>
