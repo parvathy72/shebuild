@@ -34,4 +34,4 @@ def send_static(path):
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 3000))
     print(f'ReLaunchHer server running on port {port}')
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)
